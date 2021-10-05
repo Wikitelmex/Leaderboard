@@ -1,3 +1,22 @@
 body {
   background-color: whitesmoke;
 }
+
+.wf-400 {
+  width: 400px;
+}
+
+.table-scrollable {
+  height: 370px; 
+  overflow-y: scroll;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
