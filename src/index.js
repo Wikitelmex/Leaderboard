@@ -1,17 +1,17 @@
-import _ from 'lodash';
 import './style.css';
-import { myLocalStorage } from "./modules/myLocalstorage";
 
-function component() {
-  const element = document.createElement('div');
-  const myLS = new myLocalStorage;
-
-  myLS.save();
-
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+// Form Validators
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()

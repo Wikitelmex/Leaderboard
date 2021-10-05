@@ -5,10 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Template</title>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <h1>Hello Alex</h1>
-    
+    <h1>Leaderboard</h1>
+    <div >
+
+        <!--#region Scores Table  -->
+        <div>
+            <header class="d-flex">
+                <h2>Recent scores</h2>
+                <button type="button" class="btn btn-outline-success"><span class="me-1">Refresh</span><i class="bi bi-cloud-arrow-down"></i></button>
+            </header>
+            <table class="table table-striped"">
+                <thead>
+                  <tr>
+                    <th scope="col"><strong>Name</strong></th>
+                    <th scope="col"><strong>Score</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Alex</th>
+                    <td>100</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bryan</th>
+                    <td>90</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lexi</th>
+                    <td>92</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Samuel</th>
+                    <td>85</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Erika</th>
+                    <td>77</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <!--#endregion -->
+
+        <!--#region Scores Form  -->
+        <div>
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="TextBoxName" placeholder="Your name" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid Name.
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="TextBoxScore" placeholder="Your score" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid Score.
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-outline-primary" type="submit"><span class="me-1">Submit</span><i class="bi bi-cloud-arrow-up"></i></button>
+                </div>
+            </form>
+        </div>
+        <!--#endregion -->
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
