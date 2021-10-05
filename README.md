@@ -12,7 +12,7 @@ Additional description about the project and its features.
 - Javascript
 
 ## Live Demo
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://wikitelmex.github.io/Leaderboard/)
 
 
 ## Getting Started
