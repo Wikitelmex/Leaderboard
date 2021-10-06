@@ -17,7 +17,7 @@
         <div class="wf-400">
             <header class="d-flex justify-content-between">
                 <h2>Recent scores</h2>
-                <button type="button" class="btn btn-outline-success float-right "><span class="me-1">Refresh</span><i class="bi bi-cloud-arrow-down"></i></button>
+                <button type="button" class="btn btn-outline-success float-right" onclick="window.refreshData()"><span class="me-1">Refresh</span><i class="bi bi-cloud-arrow-down"></i></button>
             </header>
             <table class="table mb-0">
               <thead>
@@ -29,75 +29,8 @@
             </table>
             <div class="table-scrollable">
               <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
-                  <tr>
-                    <td>Alex</td>
-                    <td>100</td>
-                  </tr>
+                <tbody id="tableElements">
+                  <!--Dinamic data-->
                 </tbody>
               </table>
             </div>
@@ -135,12 +68,14 @@
 
     </div>
 
+    <!--#region Scores Form  -->
     <div id='alert'>
       <div class="alert alert-danger alert-dismissible fade show fixed-bottom" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <strong>Houston, we have a problem!</strong> It seems like the server is not responding.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
+    <!--#endregion -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
