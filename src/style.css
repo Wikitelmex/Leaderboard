@@ -1,38 +1,53 @@
-@import url('https://fonts.googleapis.com/css?family=Ruda:900');
-
 body {
   background-image: url(//www.toptal.com/designers/subtlepatterns/patterns/symphony.png);
   background-position: bottom;
-  animation: 4s linear 0s infinite bp;
+  animation: 8s linear 0s infinite bp;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Raleway", sans-serif;
 }
 
 @keyframes bp {
   from {
-    background-position:  198px 0;
+    background-position: 198px 0;
   }
-  
+
   to {
-    background-position:  0 198px;
+    background-position: 0 198px;
   }
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
+::-webkit-scrollbar {
+  width: 20px;
 }
 
-.text {
-  font: 900 18px Ruda;
-  color: #C08;
-  background: white;
-  display: inline-block;
-  padding: 1rem;
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
 }
 
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+.card-style {
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+}
 
 .wf-400 {
   width: 400px;

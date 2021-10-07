@@ -50,6 +50,7 @@ myForm.addEventListener('submit', (e) => {
     score: parseInt(userScore.value, 10),
   }).then(() => {
     DomRequest.appendTemplate('tableElements', Templates.scoreRow(userName.value, userScore.value));
+    myForm.classList.remove('was-validated');
     myForm.reset();
   });
 });
