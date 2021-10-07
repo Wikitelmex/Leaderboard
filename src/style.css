@@ -1,6 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Ruda:900');
+
 body {
-  background-color: whitesmoke;
+  background-image: url(//www.toptal.com/designers/subtlepatterns/patterns/symphony.png);
+  background-position: bottom;
+  animation: 4s linear 0s infinite bp;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+@keyframes bp {
+  from {
+    background-position:  198px 0;
+  }
+  
+  to {
+    background-position:  0 198px;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.text {
+  font: 900 18px Ruda;
+  color: #C08;
+  background: white;
+  display: inline-block;
+  padding: 1rem;
+}
+
+
 
 .wf-400 {
   width: 400px;
