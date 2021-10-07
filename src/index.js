@@ -7,6 +7,22 @@ const myUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/ga
 const httpreq = new MyHttpRequest(myUrl);
 const myForm = document.querySelector('#myForm');
 
+// #region Form-Validators
+const validator = () => {
+  const forms = document.querySelectorAll('.needs-validation');
+  Array.prototype.slice.call(forms)
+    .forEach((form) => {
+      form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+};
+// #endregion
+
 window.refreshData = () => {
   DomRequest.clear('tableElements');
   httpreq.getAsync().then((res) => {
@@ -18,11 +34,13 @@ window.refreshData = () => {
 
 window.onload = () => {
   window.refreshData();
+  validator();
 };
 
 myForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (!myForm.checkValidity()) {
+    validator();
     return;
   }
   const userName = document.querySelector('#TextBoxName');
@@ -35,19 +53,3 @@ myForm.addEventListener('submit', (e) => {
     myForm.reset();
   });
 });
-
-// #region Form-Validators
-(function () {
-  const forms = document.querySelectorAll('.needs-validation');
-  Array.prototype.slice.call(forms)
-    .forEach((form) => {
-      form.addEventListener('submit', (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-}());
-// #endregion
