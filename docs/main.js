@@ -116,7 +116,37 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n(function () {\n  const forms = document.querySelectorAll('.needs-validation');\n  Array.prototype.slice.call(forms)\n    .forEach((form) => {\n      form.addEventListener('submit', (event) => {\n        if (!form.checkValidity()) {\n          event.preventDefault();\n          event.stopPropagation();\n        }\n        form.classList.add('was-validated');\n      }, false);\n    });\n}());\n\n//# sourceURL=webpack://CRUDClass-webpack-linters-jest/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_httpRequests_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/httpRequests.js */ \"./src/modules/httpRequests.js\");\n/* harmony import */ var _modules_domRequests_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/domRequests.js */ \"./src/modules/domRequests.js\");\n/* harmony import */ var _modules_domTemplates_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/domTemplates.js */ \"./src/modules/domTemplates.js\");\n\n\n\n\n\nconst myUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/dJgNxV0NZwLdKmSLhQCZ/scores/';\nconst httpreq = new _modules_httpRequests_js__WEBPACK_IMPORTED_MODULE_1__.MyHttpRequest(myUrl);\nconst myForm = document.querySelector('#myForm');\n\nwindow.refreshData = () => {\n  _modules_domRequests_js__WEBPACK_IMPORTED_MODULE_2__.DomRequest.clear('tableElements');\n  httpreq.getAsync().then((res) => {\n    res.forEach((element) => {\n      _modules_domRequests_js__WEBPACK_IMPORTED_MODULE_2__.DomRequest.appendTemplate('tableElements', _modules_domTemplates_js__WEBPACK_IMPORTED_MODULE_3__.Templates.scoreRow(element.user, element.score));\n    });\n  });\n};\n\nwindow.onload = () => {\n  window.refreshData();\n};\n\nmyForm.addEventListener('submit', (e) => {\n  e.preventDefault();\n  if (!myForm.checkValidity()) {\n    return;\n  }\n  const userName = document.querySelector('#TextBoxName');\n  const userScore = document.querySelector('#TextBoxScore');\n  httpreq.postAsync({\n    user: userName.value,\n    score: parseInt(userScore.value, 10),\n  }).then(() => {\n    _modules_domRequests_js__WEBPACK_IMPORTED_MODULE_2__.DomRequest.appendTemplate('tableElements', _modules_domTemplates_js__WEBPACK_IMPORTED_MODULE_3__.Templates.scoreRow(userName.value, userScore.value));\n    myForm.reset();\n  });\n});\n\n// #region Form-Validators\n(function () {\n  const forms = document.querySelectorAll('.needs-validation');\n  Array.prototype.slice.call(forms)\n    .forEach((form) => {\n      form.addEventListener('submit', (event) => {\n        if (!form.checkValidity()) {\n          event.preventDefault();\n          event.stopPropagation();\n        }\n        form.classList.add('was-validated');\n      }, false);\n    });\n}());\n// #endregion\n\n//# sourceURL=webpack://CRUDClass-webpack-linters-jest/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/domRequests.js":
+/*!************************************!*\
+  !*** ./src/modules/domRequests.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"DomRequest\": () => (/* binding */ DomRequest)\n/* harmony export */ });\nclass DomRequest {\n  static appendTemplate(id = '', template = '') {\n    const el = document.querySelector(`#${id}`);\n    el.innerHTML += template;\n  }\n\n  static clear(id = '') {\n    const el = document.querySelector(`#${id}`);\n    el.innerHTML = '';\n  }\n\n  static removeTemplate(idParent = '', idChild = '') {\n    const parent = document.querySelector(`#${idParent}`);\n    const child = document.querySelector(`#${idChild}`);\n    parent.removeChild(child);\n  }\n}\n\n//# sourceURL=webpack://CRUDClass-webpack-linters-jest/./src/modules/domRequests.js?");
+
+/***/ }),
+
+/***/ "./src/modules/domTemplates.js":
+/*!*************************************!*\
+  !*** ./src/modules/domTemplates.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Templates\": () => (/* binding */ Templates)\n/* harmony export */ });\nclass Templates {\n  static scoreRow(user = '', score = 0) {\n    const res = `\n        <tr>\n            <td>${user}</td>\n            <td>${score}</td>\n        </tr>\n        `;\n    return res;\n  }\n\n  static failAlert(text = '') {\n    const res = `\n        <div class=\"alert alert-danger alert-dismissible fade show fixed-bottom\" role=\"alert\">\n            <strong>Houston, we have a problem!</strong> ${text}.\n            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>\n        </div>\n        `;\n    return res;\n  }\n}\n\n\n//# sourceURL=webpack://CRUDClass-webpack-linters-jest/./src/modules/domTemplates.js?");
+
+/***/ }),
+
+/***/ "./src/modules/httpRequests.js":
+/*!*************************************!*\
+  !*** ./src/modules/httpRequests.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MyHttpRequest\": () => (/* binding */ MyHttpRequest)\n/* harmony export */ });\n/* harmony import */ var _domRequests_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./domRequests.js */ \"./src/modules/domRequests.js\");\n/* harmony import */ var _domTemplates_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domTemplates.js */ \"./src/modules/domTemplates.js\");\n\n\n\nclass MyHttpRequest {\n    #url = '';\n\n    constructor(url = '') {\n      this.#url = url;\n    }\n\n    async getAsync() {\n      try {\n        const response = await fetch(this.#url);\n        const obj = await response.json();\n        let varia = [];\n        varia = obj.result;\n        varia.sort((a, b) => b.score - a.score);\n        return varia;\n      } catch (error) {\n        _domRequests_js__WEBPACK_IMPORTED_MODULE_0__.DomRequest.appendTemplate('alert', _domTemplates_js__WEBPACK_IMPORTED_MODULE_1__.Templates.failAlert(error));\n        return false;\n      }\n    }\n\n    async postAsync(element = {}) {\n      try {\n        const response = await fetch(this.#url, {\n          method: 'POST',\n          body: JSON.stringify(element),\n          headers: {\n            'Content-type': 'application/json; charset=UTF-8',\n          },\n        });\n        const obj = await response.json();\n        return obj;\n      } catch (error) {\n        _domRequests_js__WEBPACK_IMPORTED_MODULE_0__.DomRequest.appendTemplate('alert', _domTemplates_js__WEBPACK_IMPORTED_MODULE_1__.Templates.failAlert(error));\n        return false;\n      }\n    }\n}\n\n\n//# sourceURL=webpack://CRUDClass-webpack-linters-jest/./src/modules/httpRequests.js?");
 
 /***/ })
 
