@@ -40,7 +40,7 @@
         <!--#region Scores Form  -->
         <div class="wf-400">
             <h2>Add your score</h2>
-            <form class="row g-3 needs-validation d-flex flex-column" novalidate>
+            <form class="row g-3 needs-validation d-flex flex-column" id="myForm" novalidate>
                 <div class="w-100">
                     <input type="text" class="form-control w-100" id="TextBoxName" placeholder="Your name" pattern="(?=.*[a-zA-Z])(?=.*[a-zA-Z0-9]).{4,}" required>
                     <div class="valid-feedback">
@@ -68,12 +68,9 @@
 
     </div>
 
-    <!--#region Scores Form  -->
+    <!--#region Alerts -->
     <div id='alert'>
-      <div class="alert alert-danger alert-dismissible fade show fixed-bottom" role="alert">
-        <strong>Houston, we have a problem!</strong> It seems like the server is not responding.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+
     </div>
     <!--#endregion -->
 

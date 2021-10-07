@@ -1,19 +1,17 @@
-export class domRequest {
+export class DomRequest {
+  static appendTemplate(id = '', template = '') {
+    const el = document.querySelector(`#${id}`);
+    el.innerHTML += template;
+  }
 
-    appendTemplate(id = '', template = '' ) {
-        const el = document.querySelector(`#${id}`);
-        el.innerHTML += template;
-    }
+  static clear(id = '') {
+    const el = document.querySelector(`#${id}`);
+    el.innerHTML = '';
+  }
 
-    clear(id = '') {
-        const el = document.querySelector(`#${id}`);
-        el.innerHTML = '';
-    }
-
-    removeTemplate(idParent = '', idChild = ''){
-        const parent = document.querySelector(`#${idParent}`);
-        const child = document.querySelector(`#${idChild}`);
-        parent.removeChild(child);
-    }
-
+  static removeTemplate(idParent = '', idChild = '') {
+    const parent = document.querySelector(`#${idParent}`);
+    const child = document.querySelector(`#${idChild}`);
+    parent.removeChild(child);
+  }
 }

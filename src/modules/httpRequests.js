@@ -1,48 +1,41 @@
-'use strict';
+import { DomRequest } from './domRequests.js';
+import { Templates } from './domTemplates.js';
 
-export class myHttpRequest {
+export class MyHttpRequest {
     #url = '';
 
-    constructor (url =''){
-        this.#url = url;
+    constructor(url = '') {
+      this.#url = url;
     }
 
     async getAsync() {
-        try {
-            const response = await fetch(this.#url);
-            const obj = await response.json();
-            return obj.result;
-        } catch (error) {
-            console.log('failed because ' + error);
-        }
+      try {
+        const response = await fetch(this.#url);
+        const obj = await response.json();
+        let varia = [];
+        varia = obj.result;
+        varia.sort((a, b) => b.score - a.score);
+        return varia;
+      } catch (error) {
+        DomRequest.appendTemplate('alert', Templates.failAlert(error));
+        return false;
+      }
     }
 
-    async postAsync( element = {}) {
-        try {
-            const response = await fetch(this.#url, {
-                method: 'POST',
-                body: JSON.stringify(element),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
-                });
-            const obj = await response.json();
-            return obj;
-        } catch (error) {
-            console.log('failed because ' + error);
-        }
+    async postAsync(element = {}) {
+      try {
+        const response = await fetch(this.#url, {
+          method: 'POST',
+          body: JSON.stringify(element),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+        const obj = await response.json();
+        return obj;
+      } catch (error) {
+        DomRequest.appendTemplate('alert', Templates.failAlert(error));
+        return false;
+      }
     }
 }
-
-/*
-const myHttpvar = new myHttpRequest('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/zQeTLB9MkqImEjIEky2O/scores/');
- const y = myHttpvar.post({ 
-    user: 'user1',
-    score: 66
-})
-
-y.then(res => {console.log(res);}); 
-
-const x = myHttpvar.getAsync();
-x.then( res =>{console.log(res);});
-*/

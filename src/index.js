@@ -1,25 +1,42 @@
 import './style.css';
-import { myHttpRequest } from "./modules/httpRequests.js";
-import { domRequest } from "./modules/domRequests.js";
-import { scoreRow } from "./modules/domTemplates"
+import { MyHttpRequest } from './modules/httpRequests.js';
+import { DomRequest } from './modules/domRequests.js';
+import { Templates } from './modules/domTemplates.js';
 
-const myUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/zQeTLB9MkqImEjIEky2O/scores/';
-const httpreq = new myHttpRequest(myUrl);
-const domreq = new domRequest();
+const myUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/dJgNxV0NZwLdKmSLhQCZ/scores/';
+const httpreq = new MyHttpRequest(myUrl);
+const myForm = document.querySelector('#myForm');
 
 window.refreshData = () => {
-  domreq.clear('tableElements');
-  httpreq.getAsync().then( res => {
-    res.forEach(element => {
-      domreq.appendTemplate('tableElements',scoreRow(element.user,element.score));
+  DomRequest.clear('tableElements');
+  httpreq.getAsync().then((res) => {
+    res.forEach((element) => {
+      DomRequest.appendTemplate('tableElements', Templates.scoreRow(element.user, element.score));
     });
   });
-}
+};
 
-window.onload = ()  => {
+window.onload = () => {
   window.refreshData();
 };
 
+myForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!myForm.checkValidity()) {
+    return;
+  }
+  const userName = document.querySelector('#TextBoxName');
+  const userScore = document.querySelector('#TextBoxScore');
+  httpreq.postAsync({
+    user: userName.value,
+    score: parseInt(userScore.value, 10),
+  }).then(() => {
+    DomRequest.appendTemplate('tableElements', Templates.scoreRow(userName.value, userScore.value));
+    myForm.reset();
+  });
+});
+
+// #region Form-Validators
 (function () {
   const forms = document.querySelectorAll('.needs-validation');
   Array.prototype.slice.call(forms)
@@ -33,3 +50,4 @@ window.onload = ()  => {
       }, false);
     });
 }());
+// #endregion
